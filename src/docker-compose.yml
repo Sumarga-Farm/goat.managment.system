@@ -1,0 +1,25 @@
+version: '3.4'
+
+networks:
+  goat_farm_management_dev_network:
+    driver: bridge 
+
+services:
+  postgre_goat_farm_management:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "goat_farm_management"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "goat-farm-management-dev"
+    networks:
+      - goat_farm_management_dev_network
+volumes:
+  db_volume:
+         
+    
+     
